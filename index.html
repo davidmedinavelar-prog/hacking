@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- 🎯 À TOI : change le titre qui s'affiche dans l'onglet du navigateur -->
+  <title>Mission Cyber</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!--
+    Bien joué, tu as trouvé le code source !
+    Les hackers éthiques commencent toujours par lire ce que le site
+    envoie au navigateur. Tout ce qui est ici, n'importe qui peut le voir.
+
+    Réponse de l'épreuve 1 : sous-le-capot
+  -->
+
+  <nav class="menu">
+    <a href="index.html" class="actif">🎮 Mission</a>
+    <a href="outils.html">🧰 Boîte à outils</a>
+    <a href="atelier.html">🧠 Atelier algo</a>
+  </nav>
+
+  <main class="carte">
+
+    <!-- ÉCRAN 1 : l'accueil -->
+    <section id="ecran-accueil">
+      <p class="emoji-geant">🕵️</p>
+      <!-- 🎯 À TOI : change le titre et la phrase d'intro -->
+      <h1>Mission Cyber</h1>
+      <p class="intro">Des épreuves de hacking éthique t'attendent. Utilise ta tête, la boîte à outils… et ton navigateur.</p>
+      <p class="petit">Chaque indice coûte des points. À toi de jouer, agent.</p>
+      <button id="bouton-commencer" class="bouton">Lancer la mission</button>
+      <button id="bouton-recommencer" class="bouton bouton-discret" hidden>Recommencer à zéro</button>
+    </section>
+
+    <!-- ÉCRAN 2 : une épreuve -->
+    <section id="ecran-epreuve" hidden>
+      <div class="progression"><div id="barre" class="barre"></div></div>
+      <div class="entete">
+        <span id="compteur" class="etiquette"></span>
+        <span id="categorie" class="etiquette"></span>
+        <span id="score" class="etiquette score"></span>
+      </div>
+
+      <h2 id="titre-epreuve"></h2>
+      <p id="enonce" class="enonce"></p>
+      <pre id="donnee" class="donnee" hidden></pre>
+      <div id="zone-speciale"></div>
+
+      <!-- Réponse écrite -->
+      <form id="formulaire" class="formulaire" autocomplete="off">
+        <input id="champ" type="text" placeholder="Ta réponse…" spellcheck="false">
+        <button type="submit" class="bouton">Valider</button>
+      </form>
+
+      <!-- Réponse à choisir (QCM) -->
+      <div id="choix" class="choix" hidden></div>
+
+      <p id="message" class="message" aria-live="polite"></p>
+
+      <div class="actions">
+        <button id="bouton-indice" class="bouton bouton-discret">💡 Indice</button>
+      </div>
+      <p id="indice" class="indice" hidden></p>
+
+      <!-- Affiché quand l'épreuve est réussie -->
+      <div id="bilan" class="bilan" hidden>
+        <p class="bilan-titre">✅ Épreuve réussie</p>
+        <p id="explication"></p>
+        <button id="bouton-suivant" class="bouton">Épreuve suivante →</button>
+      </div>
+    </section>
+
+    <!-- ÉCRAN 3 : la victoire -->
+    <section id="ecran-victoire" hidden>
+      <p class="emoji-geant">🏆</p>
+      <h2>Mission accomplie !</h2>
+      <p class="intro">Score final : <strong id="score-final"></strong></p>
+      <p id="grade" class="intro"></p>
+      <div class="actions">
+        <button id="bouton-partager" class="bouton">Défier mes potes</button>
+        <button id="bouton-rejouer" class="bouton bouton-discret">Rejouer</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 🎯 À TOI : mets ton prénom ici -->
+  <footer>Fait par David Medina, apprenti hacker éthique · Stage Hacking Éthique</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

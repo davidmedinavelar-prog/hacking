@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Boîte à outils · Mission Cyber</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-outils">
+
+  <nav class="menu">
+    <a href="index.html">🎮 Mission</a>
+    <a href="outils.html" class="actif">🧰 Boîte à outils</a>
+    <a href="atelier.html">🧠 Atelier algo</a>
+  </nav>
+
+  <main class="grille">
+
+    <!-- OUTIL 1 : Code César -->
+    <section class="carte outil">
+      <h2>🔐 Code César</h2>
+      <p class="petit">Décale chaque lettre de l'alphabet.</p>
+      <textarea id="cesar-texte" rows="2" placeholder="Ton texte…"></textarea>
+      <label>Décalage : <strong id="cesar-valeur">3</strong>
+        <input id="cesar-decalage" type="range" min="-25" max="25" value="3">
+      </label>
+      <pre id="cesar-sortie" class="donnee"></pre>
+      <button id="cesar-force" class="bouton bouton-discret">⚡ Force brute (les 25 décalages)</button>
+      <pre id="cesar-liste" class="donnee liste" hidden></pre>
+    </section>
+
+    <!-- OUTIL 2 : Base64 -->
+    <section class="carte outil">
+      <h2>🧾 Base64</h2>
+      <p class="petit">Un encodage, pas un chiffrement : aucune clé.</p>
+      <textarea id="b64-texte" rows="2" placeholder="Texte ou Base64…"></textarea>
+      <div class="actions">
+        <button id="b64-encoder" class="bouton bouton-discret">Encoder</button>
+        <button id="b64-decoder" class="bouton bouton-discret">Décoder</button>
+      </div>
+      <pre id="b64-sortie" class="donnee"></pre>
+    </section>
+
+    <!-- OUTIL 3 : Binaire -->
+    <section class="carte outil">
+      <h2>💻 Binaire ⇄ Texte</h2>
+      <p class="petit">8 bits = 1 caractère (code ASCII).</p>
+      <textarea id="bin-texte" rows="2" placeholder="Texte ou 01000001 01000010…"></textarea>
+      <div class="actions">
+        <button id="bin-vers" class="bouton bouton-discret">Texte → binaire</button>
+        <button id="bin-depuis" class="bouton bouton-discret">Binaire → texte</button>
+      </div>
+      <pre id="bin-sortie" class="donnee"></pre>
+    </section>
+
+    <!-- OUTIL 4 : Force d'un mot de passe -->
+    <section class="carte outil">
+      <h2>🔑 Force d'un mot de passe</h2>
+      <p class="petit">Rien n'est envoyé : tout se calcule dans ton navigateur.</p>
+      <input id="mdp" type="text" placeholder="Teste un mot de passe (pas le tien !)" spellcheck="false">
+      <div class="progression"><div id="mdp-barre" class="barre"></div></div>
+      <p id="mdp-verdict" class="message"></p>
+      <ul id="mdp-conseils" class="petit"></ul>
+    </section>
+
+    <!-- OUTIL 5 : Empreinte SHA-256 -->
+    <section class="carte outil">
+      <h2>🧬 Empreinte SHA-256</h2>
+      <p class="petit">Même texte = même empreinte. Impossible de revenir en arrière.
+        (Le texte est d'abord mis en minuscules, sans accents.)</p>
+      <input id="hash-texte" type="text" placeholder="Un mot…" spellcheck="false">
+      <pre id="hash-sortie" class="donnee"></pre>
+    </section>
+
+    <!-- OUTIL 6 : Attaque par dictionnaire -->
+    <section class="carte outil">
+      <h2>🧨 Attaque par dictionnaire</h2>
+      <p class="petit">Compare une empreinte avec celles des mots de passe les plus courants.</p>
+      <input id="dico-empreinte" type="text" placeholder="Colle une empreinte SHA-256" spellcheck="false">
+      <button id="dico-lancer" class="bouton">Lancer l'attaque</button>
+      <pre id="dico-sortie" class="donnee"></pre>
+    </section>
+
+  </main>
+
+  <footer>Ces outils ne servent que sur TES épreuves ou avec l'autorisation du propriétaire. C'est ça, l'éthique.</footer>
+
+  <script src="outils.js"></script>
+</body>
+</html>

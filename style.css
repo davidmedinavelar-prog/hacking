@@ -1,0 +1,298 @@
+/* =========================================================
+   LES COULEURS DU SITE
+   🎯 À TOI : change ces valeurs pour changer tout le site
+   d'un coup. Trouve des couleurs sur coolors.co
+   ========================================================= */
+:root {
+  --fond: #0B1020;        /* le fond de la page */
+  --carte: #131A33;       /* le fond des cartes */
+  --encre: #E8ECFF;       /* le texte */
+  --discret: #8C96C4;     /* le texte secondaire */
+  --principal: #3DFFA2;   /* les gros boutons (vert terminal) */
+  --accent: #7C5CFF;      /* la barre de progression, les étiquettes */
+  --danger: #FF5D73;      /* les erreurs */
+  --police: "Space Grotesk", system-ui, sans-serif;
+  --police-code: "JetBrains Mono", ui-monospace, monospace;
+  color-scheme: dark;
+}
+
+/* =========================================================
+   LA PAGE
+   ========================================================= */
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }  /* "hidden" gagne toujours */
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 16px 32px;
+  background:
+    radial-gradient(circle at 20% 0%, #1B2450 0%, transparent 50%),
+    var(--fond);
+  color: var(--encre);
+  font-family: var(--police);
+  line-height: 1.5;
+}
+
+.menu {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+.menu a {
+  color: var(--discret);
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+.menu a.actif {
+  color: var(--encre);
+  border-color: var(--accent);
+}
+
+.carte {
+  width: 100%;
+  max-width: 620px;
+  background: var(--carte);
+  border: 1px solid #2A3463;
+  border-radius: 20px;
+  padding: 28px 24px;
+  box-shadow: 0 20px 60px rgb(0 0 0 / 0.4);
+}
+
+h1, h2 { margin: 0 0 12px; line-height: 1.15; }
+h1 { font-size: clamp(2rem, 7vw, 3rem); }
+h2 { font-size: 1.5rem; }
+
+.emoji-geant { font-size: 4rem; margin: 0; text-align: center; }
+#ecran-accueil, #ecran-victoire { text-align: center; }
+.intro { font-size: 1.1rem; }
+.petit { color: var(--discret); font-size: 0.9rem; }
+
+footer {
+  margin-top: 24px;
+  color: var(--discret);
+  font-size: 0.85rem;
+  text-align: center;
+  max-width: 620px;
+}
+
+/* =========================================================
+   LES BOUTONS ET LES CHAMPS
+   ========================================================= */
+.bouton {
+  font: inherit;
+  font-weight: 700;
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: none;
+  background: var(--principal);
+  color: #04120B;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+.bouton:hover { transform: translateY(-2px); }
+.bouton:active { transform: translateY(1px); }
+
+.bouton-discret {
+  background: transparent;
+  color: var(--encre);
+  border: 1px solid #3A4580;
+}
+
+input[type="text"], textarea {
+  width: 100%;
+  font-family: var(--police-code);
+  font-size: 1rem;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #3A4580;
+  background: var(--fond);
+  color: var(--encre);
+}
+input[type="text"]:focus, textarea:focus {
+  outline: 2px solid var(--principal);
+  border-color: transparent;
+}
+input[type="range"] { width: 100%; accent-color: var(--principal); }
+
+.actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 16px; }
+
+/* =========================================================
+   L'ÉCRAN D'ÉPREUVE
+   ========================================================= */
+.progression {
+  height: 8px;
+  background: #222B55;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.barre {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--accent), var(--principal));
+  transition: width 0.4s;
+}
+
+.entete { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.etiquette {
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #222B55;
+}
+.score { margin-left: auto; color: var(--principal); font-family: var(--police-code); }
+
+.enonce { font-size: 1.05rem; }
+
+.donnee {
+  font-family: var(--police-code);
+  background: var(--fond);
+  color: var(--principal);
+  padding: 14px;
+  border-radius: 10px;
+  white-space: pre-wrap;
+  word-break: break-all;
+  min-height: 1em;
+}
+.donnee:empty { display: none; }
+.liste { max-height: 260px; overflow-y: auto; font-size: 0.85rem; }
+
+.formulaire { display: flex; gap: 8px; }
+.formulaire input { flex: 1; min-width: 0; }
+
+.choix { display: grid; gap: 10px; }
+.reponse {
+  background: var(--fond);
+  color: var(--encre);
+  border: 1px solid #3A4580;
+  text-align: left;
+  font-family: var(--police-code);
+  font-weight: 400;
+  word-break: break-all;
+}
+.reponse.bon { border-color: var(--principal); color: var(--principal); }
+.reponse.mauvais { border-color: var(--danger); color: var(--danger); text-decoration: line-through; }
+
+.message { min-height: 1.5em; font-weight: 700; margin: 12px 0 0; }
+.message.ok { color: var(--principal); }
+.message.erreur { color: var(--danger); animation: secousse 0.3s; }
+
+@keyframes secousse {
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+.indice {
+  border-left: 3px solid var(--accent);
+  padding: 8px 12px;
+  background: #1A2147;
+  border-radius: 0 8px 8px 0;
+}
+
+.bilan {
+  margin-top: 16px;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid var(--principal);
+  background: rgb(61 255 162 / 0.06);
+}
+.bilan-titre { margin-top: 0; font-weight: 700; color: var(--principal); }
+
+/* =========================================================
+   LA BOÎTE À OUTILS
+   ========================================================= */
+.grille {
+  width: 100%;
+  max-width: 1100px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: 16px;
+  align-items: start;
+}
+.outil { max-width: none; padding: 20px; display: grid; gap: 10px; }
+.outil h2 { font-size: 1.2rem; margin: 0; }
+.outil .petit { margin: 0; }
+.outil .actions { justify-content: flex-start; margin-top: 0; }
+
+/* =========================================================
+   L'ATELIER ALGO
+   ========================================================= */
+.colonne {
+  width: 100%;
+  max-width: 720px;
+  display: grid;
+  gap: 16px;
+}
+.colonne .carte { max-width: none; }
+.probleme h2 { font-size: 1.35rem; }
+.probleme h3 {
+  font-size: 1rem;
+  margin: 22px 0 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.numero {
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--accent);
+  font-size: 0.85rem;
+}
+code {
+  font-family: var(--police-code);
+  font-size: 0.9em;
+  background: var(--fond);
+  padding: 1px 5px;
+  border-radius: 5px;
+}
+.methode li { margin-bottom: 4px; }
+.bonus { background: #3A2E10; color: #FFD166; }
+.alerte { border-color: var(--danger); }
+
+.onglets { display: flex; gap: 8px; flex-wrap: wrap; }
+.onglet {
+  font: inherit;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid #3A4580;
+  background: transparent;
+  color: var(--discret);
+  cursor: pointer;
+}
+.onglet.actif { color: var(--encre); border-color: var(--principal); }
+
+.verrou {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px dashed #3A4580;
+  color: var(--discret);
+  margin: 0;
+}
+.tests { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.tests li {
+  display: grid;
+  gap: 2px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--fond);
+  border-left: 3px solid var(--danger);
+  word-break: break-word;
+}
+.tests li.test-ok { border-left-color: var(--principal); }
+.tests code { background: none; padding: 0; }
+
+.pouces { margin-top: 18px; }
+.pouces summary { cursor: pointer; color: var(--discret); }
+.pouces li { margin-top: 8px; }

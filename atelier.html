@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atelier algo · Mission Cyber</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-atelier">
+
+  <nav class="menu">
+    <a href="index.html">🎮 Mission</a>
+    <a href="outils.html">🧰 Boîte à outils</a>
+    <a href="atelier.html" class="actif">🧠 Atelier algo</a>
+  </nav>
+
+  <main class="colonne">
+
+    <section class="carte">
+      <h1>🧠 Atelier algo</h1>
+      <p class="intro">Chaque jour, un problème de hacker à résoudre. Les vrais développeurs ne commencent jamais par taper du code : ils <b>réfléchissent d'abord</b>.</p>
+      <ol class="methode">
+        <li><b>Comprendre :</b> résous le problème à la main sur 2 ou 3 exemples.</li>
+        <li><b>Algorithme :</b> écris les étapes en français, une par ligne.</li>
+        <li><b>Coder :</b> traduis chaque ligne en JavaScript dans <code>atelier.js</code>.</li>
+        <li><b>Tester :</b> lis les ❌, trouve pourquoi, corrige. Recommence !</li>
+      </ol>
+    </section>
+
+    <section id="erreur-chargement" class="carte alerte" hidden>
+      <h2>⚠️ atelier.js contient une erreur</h2>
+      <p>Le navigateur n'arrive pas à lire ton fichier. Regarde la ligne indiquée : il manque souvent une accolade <code>}</code>, une parenthèse ou un guillemet.</p>
+      <pre id="erreur-detail" class="donnee"></pre>
+    </section>
+
+    <div class="onglets" role="tablist">
+      <button class="onglet" data-jour="2">Jour 2 · Cadenas</button>
+      <button class="onglet" data-jour="3">Jour 3 · César</button>
+      <button class="onglet" data-jour="4">Jour 4 · Mots de passe</button>
+      <button class="onglet" data-jour="5">Jour 5 · Dictionnaire</button>
+    </div>
+
+    <div id="problemes" class="colonne"></div>
+
+  </main>
+
+  <footer>Ton algorithme est enregistré dans ce navigateur. Ton code, lui, est dans atelier.js.</footer>
+
+  <script src="atelier-moteur.js"></script>
+  <script src="atelier.js"></script>
+</body>
+</html>
