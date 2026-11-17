@@ -31,9 +31,16 @@
 // essayer(code) renvoie true si le code ouvre le cadenas.
 // Ta fonction doit renvoyer le bon code (un nombre de 0 à 999).
 // ---------------------------------------------------------
-function trouverCode(essayer) {
+function trouverCode(essayer) 
+{
   // 🎯 Ton code ici
-
+  for (let code = 0; code <= 999; code++) {
+    let resultat;
+    resultat = essayer(code);
+    if (resultat == true){
+      return code;
+    } 
+  }
 }
 
 
@@ -45,7 +52,18 @@ function trouverCode(essayer) {
 // ---------------------------------------------------------
 function trouverCodeMalin(indice) {
   // 🎯 Ton code ici
+  let mini = 0;
+  let maxi = 999;
+  
+  while (true) {
+    const milieu = Math.floor((mini + maxi)/2);
+    const resultat = indice(milieu);
+    if (resultat === "ok") return milieu;
+    
+    if (resultat === "plus") mini = milieu + 1;
+    else maxi = milieu - 1;
 
+  }
 }
 
 
