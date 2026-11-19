@@ -78,6 +78,9 @@ const ALPHABET = "abcdefghijklmnopqrstuvwxyz";
 // decalerLettre("a", 3) doit renvoyer "d"
 function decalerLettre(lettre, decalage) {
   // 🎯 Ton code ici
+const position = ALPHABET.indexOf(lettre);
+if (position === -1) return lettre;
+return ALPHABET[(position + decalage + 26) % 26];
 
 }
 
@@ -85,9 +88,15 @@ function decalerLettre(lettre, decalage) {
 // Astuce : utilise TA fonction decalerLettre !
 function cesar(texte, decalage) {
   // 🎯 Ton code ici
-
-}
-
+  let resultat = "";
+  for (const lettre of texte) {
+     resultat += decalerLettre(lettre, decalage);
+    }
+  return resultat;
+    
+  }
+ 
+  
 
 // ---------------------------------------------------------
 // JOUR 3 BONUS : ⚡ Casser César sans la clé
@@ -112,6 +121,27 @@ const CHIFFRES = "0123456789";
 
 function noteMotDePasse(mdp) {
   // 🎯 Ton code ici
+if (MOTS_INTERDITS.includes(mdp.toLowerCase())) return 0;
+let note = 0;
+let aMiniscule = false;
+let aMajuscule = false;
+let aChiffre = false;
+let aSymbole = false;
+
+if (mdp.length >=8) note ++; //note ++ équivaut à note = note + 1
+if (mdp.length >=12) note ++;
+// Pour chaque caractère (c) du mot de passe je teste si c'est une minuscule ou une majuscule ou un chiffre ou un symbole.
+for (c of mdp){
+  if (MINUSCULES.includes(c)) aMiniscule = true;
+  else if (MAJUSCULES.includes(c)) aMajuscule = true;
+  else if (CHIFFRES.includes(c)) aChiffre= true;
+  else aSymbole = true;    
+}
+if (aMiniscule === true ) note ++;  
+if (aMajuscule === true ) note ++;  
+if (aChiffre === true ) note ++;  
+if (aSymbole === true ) note ++;  
+return note;
 
 }
 
