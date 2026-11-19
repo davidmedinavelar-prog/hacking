@@ -129,7 +129,7 @@ let aChiffre = false;
 let aSymbole = false;
 
 if (mdp.length >=8) note ++; //note ++ équivaut à note = note + 1
-if (mdp.length >=12) note ++;
+if (mdp.length >=12) note ++; //length = à la taille d'une chaine de caractere 
 // Pour chaque caractère (c) du mot de passe je teste si c'est une minuscule ou une majuscule ou un chiffre ou un symbole.
 for (c of mdp){
   if (MINUSCULES.includes(c)) aMiniscule = true;
