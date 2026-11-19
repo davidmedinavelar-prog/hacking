@@ -106,6 +106,12 @@ function cesar(texte, decalage) {
 function casserCesar(message, motConnu) {
   // 🎯 Ton code ici
 
+for (let decalage = 0; decalage < 26; decalage++){
+  const essai = cesar(message, -decalage);
+  if (essai.includes(motConnu)) return essai; 
+    
+}
+return null
 }
 
 
