@@ -89,11 +89,10 @@ return ALPHABET[(position + decalage + 26) % 26];
 function cesar(texte, decalage) {
   // 🎯 Ton code ici
   let resultat = "";
-  for (const lettre of texte) {
-     resultat += decalerLettre(lettre, decalage);
-    }
+  for (const lettre of texte){
+    resultat += decalerLettre(lettre, decalage);
+  }
   return resultat;
-    
   }
  
   
@@ -174,8 +173,12 @@ function estLeVraiSite(url, vraiDomaine) {
 // Renvoie le mot trouvé, ou null.
 // ---------------------------------------------------------
 function attaqueDictionnaire(empreinteCible, dictionnaire) {
-  // 🎯 Ton code ici
+  // 🎯 Ton code ici 
 
+for (const mot of dictionnaire) {
+   if (empreinte(mot) === empreinteCible) return mot;
+ }
+return null;
 }
 
 
@@ -185,5 +188,15 @@ function attaqueDictionnaire(empreinteCible, dictionnaire) {
 // ---------------------------------------------------------
 function variantes(mot) {
   // 🎯 Ton code ici
+  let leet = "";
+  for (const lettre of mot){
+    if (lettre === "a") leet += "4";
+    else if (lettre === "e") leet += "3";
+    else if (lettre === "i") leet += "1";
+    else if (lettre === "o") leet += "0";
+    else leet += lettre;
+  }
+  return [mot, mot + "123", mot[0].toUpperCase() + mot.slice(1), mot + "!" , leet];
+
 
 }
